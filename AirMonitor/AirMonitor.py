@@ -40,5 +40,11 @@ class AirMonitor(object):
     def getData(self):
         return self.dataList
     
-    
+    def valueAt(self, t):
+        h = int(t[0])
+        minute = float(t[2:])
+        amount = self.dataList[h+1] - self.dataList[h]
+        result = self.dataList[h] + (amount * (minute / 60))
+        return result
+        
         
