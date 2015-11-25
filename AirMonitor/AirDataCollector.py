@@ -13,15 +13,15 @@ class AirDataCollector(object):
     '''
 
 
-    def __init__(self, params):
+    def __init__(self, fileName):
         '''
         Constructor
         '''
         self.dict = {}
-        self.readFile()
+        self.readFile(fileName)
         
-    def readFile(self):
-        f = open("text.txt")
+    def readFile(self, fileName):
+        f = open(fileName)
         lines = f.read().splitlines()
         for text in lines:
             listWord = text.split()
@@ -36,12 +36,16 @@ class AirDataCollector(object):
     
     def getMonitorList(self):
         for x in self.dict:
-            print(x)
+            print(self.dict[x].name)
     
     def getMonitorById(self,id):
         return self.dict[id]
     
-       
+    def getValueAtFromId(self,t,id):
+        return self.getMonitorById(id).valueAt(t)
+    
+    def getValueAtFromAll(self, t):
+        return [x.valueAt(t) for x in self.dict.values()]
             
         
         
