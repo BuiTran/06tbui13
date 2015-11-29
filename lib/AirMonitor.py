@@ -6,13 +6,7 @@ Created on Nov 24, 2015
 import math
 class AirMonitor(object):
     '''
-    Air monitor stations are placed throughout the metroplex in order to measure the concentration of air
-    borne pollutants every hour. Each monitor is identified by a unique id (long integer). For convenience,
-    we name each station (for example, ‘tollway’, ‘H1’, 'H2', etc). We track the location of each
-    station in degrees longitude and latitude (for example, -96.7 and 103.45). Each monitor collects a
-    certain kind of data (for example "ozone"). And each monitor maintains a collection of timestamped data
-    for the daily data observations (collected hourly). Data values are integers and represent parts per million.
-    –1 represents a missing data observation.
+    
 
     '''
 
@@ -40,8 +34,9 @@ class AirMonitor(object):
         return self.dataList
     
     def valueAt(self, t):
+        time = t.split(':')
         h = int(t[0])
-        minute = float(t[2:])
+        minute = float(t[1])
         amount = self.dataList[h+1] - self.dataList[h]
         result = self.dataList[h] + (amount * (minute / 60))
         return result

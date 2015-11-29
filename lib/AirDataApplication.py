@@ -19,13 +19,13 @@ class AirDataApplication(object):
         
         
     def getInverseDistance(self, x, y):
-        li = [(1 / x.distanceFrom(x,y)) for x in self.airDataCollector.dict.values()]
+        li = [(1 / a.distanceFrom(x,y)) for a in self.airDataCollector.dict.values()]
         return sum(li)
     
     def getValueAt(self,t,x,y):
         invD = self.getInverseDistance(x, y)
         liVal = self.airDataCollector.getValueAtFromAll(t)
-        liDis = [x.distanceFrom(x,y) for x in self.airDataCollector.dict.values()]
+        liDis = [a.distanceFrom(x,y) for a in self.airDataCollector.dict.values()]
         result = 0
         for i in range(len(liVal)):
             result = result + liVal[0]/liDis[0]/invD

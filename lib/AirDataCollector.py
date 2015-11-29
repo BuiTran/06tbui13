@@ -3,11 +3,10 @@ Created on Nov 24, 2015
 
 @author: tran
 '''
+import os.path
 
 
 from AirMonitor import AirMonitor
-
-import os.path
 
 
 class AirDataCollector(object):
@@ -28,13 +27,14 @@ class AirDataCollector(object):
     def readFile(self, fileName):
         f = open(fileName)
         lines = f.read().splitlines()
+        print(lines)
         for text in lines:
             listWord = text.split()
             id = int(listWord[0])
             name = listWord[1]
             lo = float(listWord[2])
             la = float(listWord[3])
-            metric = listWord([4])
+            metric = listWord[4]
             dataList = [int(s) for s in listWord[5:]]
             airMonitor = AirMonitor(id, name, lo, la, metric, dataList)
             self.dict[id] = airMonitor
