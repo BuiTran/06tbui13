@@ -3,8 +3,13 @@ Created on Nov 24, 2015
 
 @author: tran
 '''
-import os.path
+
+
 from AirMonitor import AirMonitor
+
+import os.path
+
+
 class AirDataCollector(object):
     '''
     Our AirDataCollector class allows us to access a specified data monitor from the collection of monitors. An

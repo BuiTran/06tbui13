@@ -16,7 +16,6 @@ class AirMonitor(object):
 
     '''
 
-
     def __init__(self, id, name, lo, la, metric, dataList):
         '''
         Constructor
