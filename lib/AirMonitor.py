@@ -35,9 +35,10 @@ class AirMonitor(object):
     
     def valueAt(self, t):
         time = t.split(':')
-        h = int(t[0])
-        minute = float(t[1])
-        amount = self.dataList[h+1] - self.dataList[h]
+        h = int(time[0])
+        m = (time[1])
+        minute = float(m[0]) * 10 + float(m[1])
+        amount = self.dataList[(h+1) % 23] - self.dataList[h % 23]
         result = self.dataList[h] + (amount * (minute / 60))
         return result
         

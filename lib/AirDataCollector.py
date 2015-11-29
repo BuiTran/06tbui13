@@ -27,7 +27,6 @@ class AirDataCollector(object):
     def readFile(self, fileName):
         f = open(fileName)
         lines = f.read().splitlines()
-        print(lines)
         for text in lines:
             listWord = text.split()
             id = int(listWord[0])
@@ -35,6 +34,7 @@ class AirDataCollector(object):
             lo = float(listWord[2])
             la = float(listWord[3])
             metric = listWord[4]
+            self.metric = metric
             dataList = [int(s) for s in listWord[5:]]
             airMonitor = AirMonitor(id, name, lo, la, metric, dataList)
             self.dict[id] = airMonitor
@@ -51,6 +51,9 @@ class AirDataCollector(object):
     
     def getValueAtFromAll(self, t):
         return [x.valueAt(t) for x in self.dict.values()]
+    
+    def getMetric(self):
+        return self.metric
             
         
         
