@@ -11,7 +11,7 @@ import matplotlib.pyplot as plt
 from lib.AirDataApplication import AirDataApplication 
 
 if __name__ == '__main__':
-    app = AirDataApplication("data.txt")
+    app = AirDataApplication("airdata2.txt")
     
     time = raw_input("Enter time: ")
     delta = 0.01
@@ -27,9 +27,10 @@ if __name__ == '__main__':
     X,Y = np.meshgrid(x_cor, y_cor)
      
     plt.figure()
-    CS = plt.pcolor(X,Y,Z)
+    CS = plt.pcolor(X,Y,Z, vmin = 0, vmax = 100)
     cb=plt.colorbar(CS, orientation = 'horizontal')
     cb.set_label(str(app.airDataCollector.getMetric()))
     plt.title('Contour plot of ' + str(app.airDataCollector.getMetric()) + ' at ' + str(time))
     plt.show()
+    plt.xlim(0,100)
     
